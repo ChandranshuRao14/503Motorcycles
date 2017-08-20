@@ -8,17 +8,17 @@ from django.shortcuts import render, get_object_or_404
 
 def index(request):
     bike_list = Motorcycle.objects.all()
-    moto_filter = MotoFilter(request.GET, queryset=bike_list)
-    paginator = Paginator(moto_filter.qs, 5)
-    page = request.GET.get('page')
-    try:
-        bikes = paginator.page(page)
-    except PageNotAnInteger:
-        bikes = paginator.page(1)
-    except EmptyPage:
-        bikes = paginator.page(paginator.num_pages)
+    # moto_filter = MotoFilter(request.GET, queryset=bike_list)
+    # paginator = Paginator(moto_filter.qs, 5)
+    # page = request.GET.get('page')
+    # try:
+    #     bikes = paginator.page(page)
+    # except PageNotAnInteger:
+    #     bikes = paginator.page(1)
+    # except EmptyPage:
+    #     bikes = paginator.page(paginator.num_pages)
 
-    return render(request, 'marketplace/index.html', context = {'filter': moto_filter,'bikes': bikes})
+    return render(request, 'marketplace/index.html', context = {'bikes': bikes}) #{'filter': moto_filter,'bikes': bikes})
 
 def detail(request, pk):
     form = ContactForm()
