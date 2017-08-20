@@ -12,15 +12,15 @@ def createTuple(attr):
         newList.append((item,item))
     return tuple(newList)
 
-# MAKE_CHOICES = createTuple("make")
+MAKE_CHOICES = createTuple("make")
 
-# COLOR_CHOICES = createTuple("color")
+COLOR_CHOICES = createTuple("color")
 
-# YEAR_CHOICES = createTuple("year")
+YEAR_CHOICES = createTuple("year")
 
-# TYPE_CHOICES = createTuple("typeOfBike")
+TYPE_CHOICES = createTuple("typeOfBike")
 
-# ESIZE_CHOICES = createTuple("engineSize")
+ESIZE_CHOICES = createTuple("engineSize")
 
 def myFilter(queryset, name, value):
     if ' ' in value:
