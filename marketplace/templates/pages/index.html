@@ -1,0 +1,92 @@
+{% extends 'marketplace/base.html' %}
+
+{% block body %}
+
+    <div class="intro-header frontpage">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1 class="logo-503">503 Motorcycles</h1>
+                        <hr class="intro-divider">
+                        <a href="{% url 'marketplace:index' %}" class="btn btn-danger btn-lg">Our Garage</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Shop for Used Motorcycles</h2>
+                    <p class="lead">Whatever your dream bike is, if we don't have it we will get it for you. 
+                        We have access to auctions across the country, so we will get you your dream bike.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    {% load static %}
+                    <img class="img-responsive img-rounded" src="{% static 'pages/img/header.png' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+    <div class="content-section-b">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">All the Top Models</h2>
+                    <p class="lead">We carry some of the most popular bikes so come get yours before they're all gone!
+                        Drop us a <a class="request-link" href="{% url 'pages:request' %}">request</a> if you don't see a 
+                        bike that you love and we'll make your wish come true.
+                        </p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    {% load static %}
+                    <img class="img-responsive img-rounded" src="{% static 'pages/img/frontpage_a.jpeg' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Shop With Peace of Mind</h2>
+                    <p class="lead">Every bike we sell passes a safety inspection. 
+                        We inspect every bike so you don't have any surprises later.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    {% load static %}
+                    <img class="img-responsive img-rounded" src="{% static 'pages/img/frontpage_b.JPG' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+{% endblock %}

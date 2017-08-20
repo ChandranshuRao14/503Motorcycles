@@ -1,0 +1,20 @@
+{% extends 'marketplace/base.html' %}
+
+{% block body %}
+{% load static %}
+<div id="initialcontainer" class="container">
+<h1>About</h1>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+                <img class="img-responsive center-block" src="{% static 'pages/img/logo.png'%}">
+    </div>
+    <div class="col-md-6">
+        <p class="about">We are a small motorcycle dealership that strives to change the 
+            way used motorcycles are sold. The founders have carried over their 
+            experiences from the used car industry, specifically on how technology 
+            has significantly improved the car buying experience, to improve the 
+            efficiency and transparency of the process for customers.</p>
+    </div>
+</div>
+</div>
+{% endblock %}

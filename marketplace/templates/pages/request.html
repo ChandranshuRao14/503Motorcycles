@@ -1,0 +1,127 @@
+{% extends 'marketplace/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block body %}
+<script>
+    $(document).ready(function () {
+        $(".form-control").on("paste",function(e){
+            e.preventDefault();
+        });
+    });
+    function validate(){
+        var e = event || window.event;  
+        var key = e.keyCode || e.which;     
+        if (key == 60 || key == 62 || key == 188 || key == 190) { 
+           if (e.preventDefault) e.preventDefault(); 
+           e.returnValue = false; 
+        }
+    }
+    function validatePhone(){
+        var allowed = [8,13,16,37,39,48,49,50,51,52,53,54,55,56,57,58,189];
+        var e = event || window.event;  
+        var key = e.keyCode || e.which;                      
+        if (!allowed.includes(key)) { 
+           if (e.preventDefault) e.preventDefault(); 
+           e.returnValue = false; 
+        }
+    }
+</script>
+<div id="initialcontainer" class="container">
+<div class="row">
+    <h1 class="center">Request a Motorcycle</h1>
+</div>
+<br>
+<section class="colored-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h3 class="section-heading">Can't find the bike you're looking for?</h3>
+                <p class="text-faded">If there's a particular bike that you're looking for, we can get it for you! 
+                    We have access to auctions across the country, so we will get you your dream bike.
+                    Just provide us with some information on the motorcycle you want and we will get back to you.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<div class="panel panel-default panel-form col-md-10 col-md-offset-1">
+    <div class="panel-body">
+    <div class="container-fluid">
+    <h4 class="center">Request Form</h4>
+    <br>
+    <form role="form" action="" method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group row {% if form.name.errors %}has-error{% endif %}">
+            <label for="id_name" class="label-request col-sm-3 col-form-label">Name<span class="required">*</span>:</label>
+            <div class="col-sm-9">
+                {% render_field form.name onKeyDown="validate()" class="form-control" autocomplete="false" placeholder="Name" %}
+                {% if form.name.errors %}
+                    <span class="help-block">
+                    {% for error in form.name.errors %}{{ error }}{% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row {% if form.email.errors %}has-error{% endif %}">
+            <label for="id_email" class="label-request col-sm-3 col-form-label">Email<span class="required">*</span>:</label>
+            <div class="col-sm-9">
+                {% render_field form.email class="form-control" autocomplete="false" placeholder="you@example.com" %}
+                {% if form.email.errors %}
+                    <span class="help-block">
+                    {% for error in form.email.errors %}{{ error }}{% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row {% if form.phone.errors %}has-error{% endif %}">
+            <label for="id_phone" class="label-request col-sm-3 col-form-label">Phone<span class="required">*</span>:</label>
+            <div class="col-sm-9">
+                {% render_field form.phone onKeyDown="validatePhone()" class="form-control" autocomplete="false" placeholder="555-555-5555" %}
+                {% if form.phone.errors %}
+                    <span class="help-block">
+                    {% for error in form.phone.errors %}{{ error }}{% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row {% if form.budget.errors %}has-error{% endif %}">
+            <label for="id_budget" class="label-request col-sm-3 col-form-label">Budget ($)<span class="required">*</span>:</label>
+            <div class="col-sm-9">
+                {% render_field form.budget class="form-control" autocomplete="false" placeholder="5000" %}
+                <small class="form-text text-muted">What is your budget for this bike?</small>
+                {% if form.budget.errors %}
+                    <span class="help-block">
+                    {% for error in form.budget.errors %}{{ error }}{% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row {% if form.content.errors %}has-error{% endif %}">
+            <label for="id_content" class="label-request col-sm-3 col-form-label">Information<span class="required">*</span>:</label>
+            <div class="col-sm-9">
+                {% render_field form.content onKeyDown="validate()" class="form-control" autocomplete="false" placeholder="Enter the year, make, and model of the bike you would like us to get for you." %}
+                {% if form.content.errors %}
+                    <span class="help-block">
+                    {% for error in form.content.errors %}{{ error }}{% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary submit-button">Submit Request</button>
+        </div>
+        <br>
+    </form>
+    </div> 
+    </div>
+</div>
+</div>
+{% endblock %}

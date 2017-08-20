@@ -1,0 +1,192 @@
+{% extends 'marketplace/base.html' %}
+
+<title>{% block title %}503 Motorcycles Marketplace{% endblock %}</title>
+
+{% load widget_tweaks %}
+
+{% load mytemplatetags %}
+
+{% load static %}
+
+{% block body %}
+    <script>
+        $(document).ready(function(){
+            $( ":input" ).removeClass('collapse');
+            $("a.btn-custom").click(function(){
+                var menu = $(this).attr('id');
+                if($("#" + menu).find(".glyphicon").hasClass("glyphicon-menu-up")){
+                    $("#" + menu).find(".glyphicon").removeClass("glyphicon-menu-up");
+                    $("#" + menu).find(".glyphicon").addClass("glyphicon-menu-down");
+                }
+                else if($("#" + menu).find(".glyphicon").hasClass("glyphicon-menu-down")){
+                    $("#" + menu).find(".glyphicon").removeClass("glyphicon-menu-down");
+                    $("#" + menu).find(".glyphicon").addClass("glyphicon-menu-up");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            $( "#price-slider" ).slider({
+               range:true,
+               step: 500,
+               min: 500,
+               max: 25000,
+               values: [ 4000, 20000 ],
+               slide: function( event, ui ) {
+                  $("#id_price_0").val(ui.values[ 0 ]);
+                  $("#id_price_1").val(ui.values[ 1 ]);
+               }
+            });
+            $( "#mileage-slider" ).slider({
+               range:true,
+               step: 5,
+               min: 0,
+               max: 100,
+               values: [ 10, 80 ],
+               slide: function( event, ui ) {
+                  $("#id_mileage_0").val(ui.values[ 0 ]);
+                  $("#id_mileage_1").val(ui.values[ 1 ]);
+               }
+            });
+            $("#id_price_0").val($( "#price-slider" ).slider( "values", 0 ));
+            $("#id_price_1").val($( "#price-slider" ).slider( "values", 1 ));
+            $("#id_mileage_0").val($( "#mileage-slider" ).slider( "values", 0 ));
+            $("#id_mileage_1").val($( "#mileage-slider" ).slider( "values", 1 ));
+         });
+    </script>
+<div id="initialcontainer" class="container">    
+    <div class="row">
+        <h1 class="center">503 Motorcycles Marketplace</h1>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><h5 class="center results-count">Total Results: {{ bikes.object_list.count }}</h5></li>
+                <br>
+                <li>
+                    <form id="searchbox" method="get">
+                        <div class="input-group row search-marketplace">
+                            {% render_field filter.form.bike class="form-control" maxlength="50" autocomplete="off" placeholder="Search" %}
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+                <form method="get">
+                    <li><a id="filtermenu-make" class="btn btn-custom spacer" data-toggle="collapse" href="#id_make" role="button"><h4><span id="gylph" class="glyphicon glyphicon-menu-up" aria-hidden="true"></span> Make</h4></a></li>
+                    <li>
+                        {% render_field filter.form.make class="filter-options collapse in" %}
+                    </li>
+                    <li><a id="filtermenu-year" class="btn btn-custom" data-toggle="collapse" href="#id_year" role="button"><h4><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span> Year</h4></a></li>
+                    <li>
+                        {% render_field filter.form.year class="filter-options collapse in" %}
+                    </li>
+                    <li><a id="filtermenu-mileage" class="btn btn-custom" data-toggle="collapse" href="#mileage" role="button"><h4><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span> Mileage</h4></a></li>
+                    <li>
+                        <div id="mileage" class="collapse in">
+                            <label for="mileage-slider" class="center">Mileage Range (in thousands)</label>
+                            <div id = "mileage-slider"></div>
+                            <br>
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="text" name="mileage_0" class="form-control ranger" id="id_mileage_0">
+                                <input type="text" name="mileage_1" class="form-control ranger" id="id_mileage_1">
+                            </div>
+                        </div>
+                    </li>
+                    <li><a id="filtermenu-color" class="btn btn-custom" data-toggle="collapse" href="#id_color" role="button"><h4><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span> Color</h4></a></li>
+                    <li>
+                        {% render_field filter.form.color class="filter-options custom-control collapse in" %}
+                    </li>
+                    <li><a id="filtermenu-type" class="btn btn-custom" data-toggle="collapse" href="#id_typeOfBike" role="button"><h4><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span> Type</h4></a></li>
+                    <li>
+                        {% render_field filter.form.typeOfBike class="filter-options custom-control collapse in" %}
+                    </li>
+                    <li><a id="filtermenu-price" class="btn btn-custom" data-toggle="collapse" href="#price" role="button"><h4><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span> Price</h4></a></li>
+                    <li>
+                        <div id="price" class="collapse in">
+                            <label for="price-slider" class="center">Price Range ($)</label>
+                            <div id = "price-slider"></div>
+                            <br>
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <input type="text" name="price_0" class="form-control ranger" id="id_price_0">
+                                <input type="text" name="price_1" class="form-control ranger" id="id_price_1">
+                            </div>
+                        </div>
+                    </li>
+                    <li><a id="filtermenu-engine" class="btn btn-custom" data-toggle="collapse" href="#id_engineSize" role="button"><h4><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span> Engine Size</h4></a></li>
+                    <li>
+                        {% render_field filter.form.engineSize class="filter-options custom-control collapse in" %}
+                    </li>
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="apply-filter btn btn-primary"><i class="fa fa-sliders filter-icon"></i>Apply Filters</button>
+                    </div>
+                </form>
+            </ul>
+            <br>
+            <br>
+        </div>
+        <div class="col-md-offset-1 col-md-9">
+             <br>
+                {% if bikes.object_list %}
+                    {% for m in bikes.object_list %}
+                        <div class="row">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    {% if m.sold %}
+                                    <div class="alert alert-danger row col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2"><p class="text-center">SOLD</p></div>
+                                    {% endif %}
+                                    <div class="col-md-6">
+                                        <img class="img-responsive" src="{{ m.pics.url|cut:"0" }}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row"><a class="bike-title" href="{% url 'marketplace:detail' m.id %}"><h2 class="center">{{ m.year }} {{ m.make }} {{ m.model }}</h2></a></div>
+                                        <div class="row"><h3 class="center"><span class="index-label">Price:</span> ${{ m.price }}</h3></div>
+                                        <div class="row"><h3 class="center"><span class="index-label">Mileage:</span> {{ m.mileage }}K</h3></div>
+                                        <br>
+                                        <br>
+                                        <div class="row center">
+                                            <div class="container-fluid">
+                                                <a href="{% url 'marketplace:detail' m.id %}"><button type="button" class="btn btn-primary btn-lg btn-block">Details</button></a>
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                        <h3>No Results</h3>
+                {% endif %}
+            <div class="row text-center col-md-12">
+            <ul class="pagination pagination-lg">
+                {% if bikes.has_previous %}
+                    <li><a href="?page={{ bikes.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in bikes.paginator.page_range %}
+                {% if bikes.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li><a href="?page={{ i }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if bikes.has_next %}
+                    <li><a href="?page={{ bikes.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
