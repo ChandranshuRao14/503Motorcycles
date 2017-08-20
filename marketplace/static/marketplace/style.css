@@ -1,0 +1,309 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+.logo-503{
+	font-family: 'Bangers', cursive;
+	font-size: 30px;
+	color: white !important;
+}
+
+.navbar-nav>li>a{
+	color: white !important;
+}
+
+.menu{
+	background-color: #b72316;
+	font-family: 'Roboto Slab', serif;
+}
+
+.navbar{
+	min-height: 60px !important;
+	margin-bottom: 0px;
+	border-bottom: 0px;
+	color: white;
+}
+
+.navbar-right{
+	padding-top: 5px;
+}
+.menu-item:hover{
+	/*background-color: #646464;*/
+	border-bottom: 3px solid white;
+}
+
+.navbar-brand{
+	padding-top: 20px;
+}
+
+.navbar-toggle{
+	margin-top: 12px;
+}
+
+.menu-item{
+	padding: 0px 9px;
+}
+
+.user:hover{
+	/*background-color: #404041;*/
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+.user{
+	margin-right: 10px;
+}
+
+.glyphicon-user{
+	padding-right: 8px;
+}
+
+.img-bikes{
+    height: 150px;
+}
+
+.no-border{
+    border: none;
+}
+
+.same-height{
+    height: 400px;
+}
+
+.center{
+    text-align: center;
+}
+
+.search-marketplace{
+    padding: 0px 10px;
+}
+
+.bike-name{
+	text-align: center;
+}
+
+.page-header-no-border{
+	padding-bottom: 9px;
+    margin: 40px 0 20px;
+}
+
+.breadcrumb{
+	background-color: white;
+}
+
+.modal-dialog{
+	margin: 80px auto;
+}
+.close{
+	margin-top: -30px !important;
+}
+
+.filter-options{
+	list-style-type: none;
+}
+
+.btn-custom{
+    color: black;
+    background-color: white;
+    border-color: white;
+    width: 100%;
+    text-align: justify;
+}
+
+.btn-custom:hover{
+	background-color: #f2f2f2;
+}
+
+label{
+	font-weight: 300;
+}
+
+.spacer{
+	margin-top: 15px;
+}
+
+.btn-success{
+	width: 100%;
+}
+
+.btn-report{
+	width: 100%;
+}
+.label-request{
+	padding-top: 5px;
+}
+
+.modal-footer{
+	border-top: none;
+}
+
+.required{
+	color: red;
+}
+
+.btn-spacer{
+	margin-bottom: 25px;
+}
+
+.bike-title{
+	color: black;
+}
+
+.bike-title:hover{
+	color: grey;
+	text-decoration: none;
+}
+
+.ranger{
+	margin-bottom: 10px;
+}
+
+.img-detail{
+	height: 80px;
+}
+
+.img-info{
+	font-weight: 300;
+}
+
+.img-more-info{
+	margin-bottom: 50px;
+}
+
+.description{
+	text-align: justify;
+}
+
+.footer{
+	background: #f2f2f2;
+	color: #7a7a7a;
+	text-align: center;
+	min-height: 50px;
+	margin-top: 50px;
+}
+
+/*Footer Hyperlink*/
+.footerLink{
+	color: #d9534f;
+	padding-bottom: 8px;
+}
+
+.socialLinks{
+	list-style-type: none;
+    font-size: 35px;
+    color: black;
+	padding-left: 0px;
+}
+
+.fa{ 
+	color:black;
+}
+
+.fa:hover{
+	color: black;
+    transform: scale(1.1,1.1);
+}
+
+.phone{
+	font-size: 14px;
+    padding-top: 3px;
+}
+
+.footer-info{
+	padding-top: 10px;
+}
+
+.footer-breaker{
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
+
+.index-label{
+	font-weight: 300;
+}
+
+textarea{
+	resize: none;
+}
+
+.submit-button{
+	padding: 6px 50px;
+}
+
+section {
+	background: #f2f2f2;
+    padding: 50px 0;
+}
+
+.panel-form{
+	box-shadow: 4px 4px 4px #ddd;
+}
+
+.footer-page-link{
+	color: #7a7a7a;
+}
+
+.footer-page-link:hover{
+	color: #7a7a7a;
+}
+
+.filter-icon {
+    color: white !important;
+    padding-right: 8px;
+}
+
+.results-count {
+    font-weight: 200;
+    margin: 0px;
+}
+
+.ui-widget-header{
+	background: #337ab7 url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x !important;
+}
+
+.price-tag{
+	padding-right: 8px;
+	font-size: 14px;
+}
+
+.price-range-header{
+	margin-bottom: 14px;
+}
+
+.phone-icon, .phone-icon:hover{
+	color: grey;
+}
+
+#mileage, #price{
+	padding-left: 15px;
+}
+
+.content-section-a{
+	margin-bottom: 30px;
+}
+
+.content-section-b{
+	margin-bottom: 30px;
+}
+
+.frontpage{
+	margin-top: -10px;
+	margin-bottom: 50px;
+    background: url(../pages/img/IMG_0817.JPG) no-repeat center center !important;
+    background-size: cover;
+}
+
+.request-link{
+	font-weight: 400;
+}
+
+#slider-thumbs{
+	margin-top: 15px;
+}
+
+.selected > img{
+	opacity: .5;
+}
+
+.about{
+	font-size: 20px;
+}
